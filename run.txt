@@ -1,0 +1,1 @@
+cargo run --manifest-path ..\kye\Cargo.toml -- clocks.kye
