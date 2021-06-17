@@ -1,0 +1,143 @@
+unused: EJNSUVZflFL
+
+Self modification:
+¿ 	>       pusher right, push command 1 unit into a " " only
+¿ 	<       pusher left, push command 1 unit into a " " only
+¿ 	^       pusher up, push command 2 unit into a " " only
+¿ 	v       pusher down, push command 1 unit into a " " only
+¿		pusher up left
+¿		pusher up right
+¿		pusher down right
+¿		pusher down left
+¿	O	unpushable block
+  	p	read character from thread subjective right and push onto stack
+  	q	read character from thread subjective left and push onto stack
+  	m	pop character off stack and overwrite unit to subjective right
+  	M	pop character off stack and overwrite unit to subjective left
+		read character infront
+		pop character infront
+		read character behind
+		pop character behind
+*	h	read character <pop> infront
+	H	pop character <pop> infront
+	Z	pop entire stack to infront
+
+
+flow control:
+	I	interupt - spawn interupt handling thread
+		interupt - spawn thread, pause existing thread until interupt dies, put interupts stack on old thread
+	n	iterate next intruction <pop from stack> times
+	j	taxi: jump <pop from stack> cells forward ("a..z""A..Z" are 1-52)
+	#	trampoline - jump one character and continue
+	;	jump-over until next ;
+	t	conditional trampoline, pull 2 off stack and subtract, trampoline if == 0
+	b	8-way branch, pop, turn clockwise if +ve, anticlockwise if -ve, straight on if 0
+	d	8-way branch, pop, turn anti-clockwise if +ve, clockwise if -ve, straight is 0
+	B	4-way branch, pop, turn clockwise if +ve, anticlockwise if -ve, straight if 0
+	D	4-way branch, pop, turn anti-clockwise if +ve, clockwise if -ve straight if 0
+	T	fork two threads perpendicularly to incoming thread, which dies
+	Y	fork two threads at 45 degrees to incoming thread, which dies
+*	x	fork four threads at 45 degrees
+*	X	fork four threads at 90 degrees
+	g	fork off a thread 90 degrees to the right
+	G	fork off a thread 90 degrees to the left
+*	W	wait for two threads, kill both, create new thread in direction of first
+*	w	wait for two threads, kill both, create new thread in direction of second
+*	k	kill every odd thread
+*	K	kill every even thread
+	@	kill the current thread
+		east->west valve
+		west->east valve
+		north->south valve
+		etc
+		increment speed
+		decerement speed
+		push speed to stack
+		pop stack to speed
+		duplicate top value on stack, push back on stack
+¿	7       go north-west
+¿	8       go north
+¿	9       go north-east
+¿	6       go east
+¿	3       go south-east
+¿	2       go south
+¿	1       go south-west
+¿	4       go west
+¿	a       8-way turn anticlockwise
+¿	c       8-way turn clockwise
+¿	A       4-way turn anticlockwise
+¿	C       4-way turn clockwise
+¿	/	mirror, threads bounce off if perpendicular
+¿	_	mirror
+¿	\	mirror
+¿	|	mirror
+	Q	quit, killing all threads. return <pop from stack> or 0
+
+stack operations:
+	+	reverse-polish addition
+	-	reverse-polish subtraction
+÷	i	reverse-polish division
+×	*  	reverse-polish multiply
+¿	s	reverse-polish square root
+¿		cube root
+¿		quad root
+	%	reverse-polish modulus
+	e	reverse-polish exponent
+¿	o,Š	reverse-polish bitwise or
+ 	x	reverse-polish bitwise xor
+¿	&	reverse-polish bitwise and
+	!	reverse-polish boolean not
+	u	reverse-polish boolean xor
+	~	reverse-polish bitwise invert
+	[	increment value on stack
+	]	decrement value on stack
+*	}	right-shift value on stack
+*	{	left-shift valye on stack
+	z	push 0 onto stack
+	y	duplicate value on stack (pop push push)
+¿		push 1 onto stack
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿
+¿	20
+
+
+¿
+¿
+¿
+¿
+
+I/O:
+*	R	read stdin onto stack, terminate on \n
+*	r	read stdin onto stack, terminal after 1 character
+	P	pop entire stack to stdout
+	'	switch between data and code (quote string)
+	,	pop one item from the stack to stdout
+	"	push next character onto stack, remain in code mode
+	.	discard stack
+
+--
+* unimplemented
