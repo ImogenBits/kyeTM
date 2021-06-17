@@ -24,7 +24,7 @@
 '-#######################'
 
 
-cargo run --manifest-path ..\kye\Cargo.toml -- clocks.kye
+cargo run --manifest-path ..\kye\Cargo.toml -- clocks.kye > output.txt 2>&1
 
 
 
